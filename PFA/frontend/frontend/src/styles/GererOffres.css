@@ -1,0 +1,574 @@
+/* GererOffres.css */
+
+.gerer-offres-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+}
+
+.header h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin: 0;
+}
+
+/* Filters */
+.filtres {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.filtres label {
+    font-weight: 600;
+    color: #cbd5e1;
+    font-size: 0.95rem;
+}
+
+.filtre-select {
+    padding: 0.5rem 1rem;
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 0.5rem;
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filtre-select:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Loading & No Data */
+.loading,
+.no-data {
+    text-align: center;
+    padding: 3rem;
+    color: #94a3b8;
+    font-size: 1.1rem;
+}
+
+/* Alerts */
+.alert {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert-error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid #ef4444;
+    color: #fca5a5;
+}
+
+/* Offres Grid */
+.offres-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Offre Card */
+.offre-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.offre-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+.offre-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.offre-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    flex: 1;
+}
+
+/* Badges */
+.badge {
+    padding: 0.375rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.badge-active {
+    background: rgba(34, 197, 94, 0.2);
+    color: #86efac;
+    border: 1px solid #22c55e;
+}
+
+.badge-fermee {
+    background: rgba(148, 163, 184, 0.2);
+    color: #cbd5e1;
+    border: 1px solid #94a3b8;
+}
+
+.badge-brouillon {
+    background: rgba(234, 179, 8, 0.2);
+    color: #fde047;
+    border: 1px solid #eab308;
+}
+
+/* Offre Info */
+.offre-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.offre-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+}
+
+.offre-info strong {
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+/* Offre Description */
+.offre-description {
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.offre-description p {
+    margin: 0;
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* --- UPDATED: Share Actions (only 2 buttons) --- */
+.offre-share-actions {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    border-top: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.btn-share {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 80px;
+}
+
+.share-icon {
+    font-weight: 900;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.btn-linkedin {
+    background: rgba(0, 119, 181, 0.2);
+    color: #0a66c2;
+    border-color: #0a66c2;
+}
+
+.btn-linkedin:hover {
+    background: rgba(0, 119, 181, 0.3);
+}
+
+.btn-indeed {
+    background: rgba(47, 72, 88, 0.2); /* indeed blue/gray */
+    color: #2178ad;
+    border-color: #2178ad;
+}
+
+.btn-indeed:hover {
+    background: rgba(47, 72, 88, 0.3);
+}
+/* --- END UPDATED --- */
+
+
+/* Offre Actions (Modification/Statut) */
+.offre-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.btn-action {
+    flex: 1;
+    min-width: 100px;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-edit {
+    background: rgba(59, 130, 246, 0.2);
+    color: #93c5fd;
+    border: 1px solid #3b82f6;
+}
+
+.btn-edit:hover {
+    background: rgba(59, 130, 246, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-publish {
+    background: rgba(34, 197, 94, 0.2);
+    color: #86efac;
+    border: 1px solid #22c55e;
+}
+
+.btn-publish:hover {
+    background: rgba(34, 197, 94, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-close {
+    background: rgba(234, 179, 8, 0.2);
+    color: #fde047;
+    border: 1px solid #eab308;
+}
+
+.btn-close:hover {
+    background: rgba(234, 179, 8, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-delete {
+    background: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    border: 1px solid #ef4444;
+}
+
+.btn-delete:hover {
+    background: rgba(239, 68, 68, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background: rgba(15, 23, 42, 0.98);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 1rem;
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content h3 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.5rem;
+    color: #e2e8f0;
+}
+
+.modal-content .form-group {
+    margin-bottom: 1rem;
+}
+
+.modal-content label {
+    display: block;
+    font-weight: 600;
+    color: #cbd5e1;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 0.5rem;
+    color: #e2e8f0;
+    font-size: 1rem;
+    transition: all 0.2s;
+    box-sizing: border-box;
+}
+
+.modal-content input:focus,
+.modal-content select:focus,
+.modal-content textarea:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn-primary,
+.btn-secondary {
+    flex: 1;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: rgba(148, 163, 184, 0.2);
+    color: #cbd5e1;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.btn-secondary:hover {
+    background: rgba(148, 163, 184, 0.3);
+}
+/* Add these styles to your existing GererOffres.css file */
+
+/* Interview button styling */
+.btn-interview {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.btn-interview:hover {
+    background: linear-gradient(135deg, #5568d3 0%, #63408a 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-interview:active {
+    transform: translateY(0);
+}
+
+/* Make sure button actions are responsive */
+.offre-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-action {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-weight: 500;
+}
+
+/* Existing button styles - ensure they still work */
+.btn-edit {
+    background: #3b82f6;
+    color: white;
+}
+
+.btn-edit:hover {
+    background: #2563eb;
+}
+
+.btn-publish {
+    background: #10b981;
+    color: white;
+}
+
+.btn-publish:hover {
+    background: #059669;
+}
+
+.btn-close {
+    background: #f59e0b;
+    color: white;
+}
+
+.btn-close:hover {
+    background: #d97706;
+}
+
+.btn-delete {
+    background: #ef4444;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #dc2626;
+}
+
+/* Share buttons styling */
+.offre-share-actions {
+    display: flex;
+    gap: 8px;
+    margin: 12px 0;
+    padding-top: 12px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.btn-share {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+
+.btn-linkedin {
+    background: #0077b5;
+}
+
+.btn-linkedin:hover {
+    background: #005582;
+    transform: translateY(-1px);
+}
+
+.btn-indeed {
+    background: #2164f3;
+}
+
+.btn-indeed:hover {
+    background: #1557d8;
+    transform: translateY(-1px);
+}
+
+.share-icon {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .offre-actions {
+        flex-direction: column;
+    }
+    
+    .btn-action {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .offre-share-actions {
+        flex-direction: column;
+    }
+    
+    .btn-share {
+        width: 100%;
+        justify-content: center;
+    }
+}
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .offres-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+    
+    .offre-share-actions {
+        flex-direction: column;
+    }
+    
+    .btn-share {
+        min-width: 100%;
+    }
+}
