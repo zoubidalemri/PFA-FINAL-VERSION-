@@ -1,0 +1,9 @@
+# Local LLM / AI models (too large for GitHub)
+career-ai-service/models/
+career-ai-service/llm/
+*.bin
+*.gguf
+*.pt
+*.h5
+*.onnx
+*.pkl

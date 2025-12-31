@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+career-ai-service/venv/
+career-ai-service/venv/**
+Commande ECHO activée.
+# AI models
+career-ai-service/models/
+career-ai-service/models/**
+*.gguf
+*.safetensors
+*.bin
+*.dll
+Commande ECHO activée.
+# Node / build
+node_modules/
+backend/target/

@@ -1,0 +1,251 @@
+
+/* ================================================
+   NAVBAR
+================================================ */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 3rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(12px);
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.92),
+    rgba(15, 23, 42, 0.7)
+  );
+  z-index: 10;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.03em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.nav-links a {
+  color: #cbd5f5;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+.btn-outline {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #6366f1;
+  background: transparent;
+  color: #e5e7eb;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-outline:hover {
+  background: rgba(99, 102, 241, 0.12);
+}
+
+/* ================================================
+   HERO SECTION
+================================================ */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+  gap: 2.5rem;
+  padding: 3rem 3rem 2rem;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.hero-text h1 span {
+  color: #6366f1;
+}
+
+.hero-text p {
+  color: #cbd5f5;
+  max-width: 34rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  border-radius: 999px;
+  padding: 0.7rem 1.4rem;
+  border: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn-secondary {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: #e5e7eb;
+}
+
+.btn-secondary:hover {
+  background: rgba(15, 23, 42, 0.7);
+}
+
+.hero-note {
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+/* HERO CARD */
+
+.hero-card {
+  align-self: center;
+  background: radial-gradient(circle at top left, #1e293b, #020617 70%);
+  border-radius: 1.5rem;
+  padding: 1.8rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  box-shadow: 0 25px 50px -25px rgba(15, 23, 42, 0.9);
+}
+
+.hero-card h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.hero-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hero-card li {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.hero-card li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #22c55e;
+}
+
+/* ================================================
+   SECTIONS
+================================================ */
+
+.section {
+  padding: 2.5rem 3rem 3rem;
+}
+
+.section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.features {
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.cards {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.card {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #cbd5f5;
+}
+
+.roles {
+  background: radial-gradient(circle at bottom, #0f172a, #020617 60%);
+}
+
+/* ================================================
+   FOOTER
+================================================ */
+
+.footer {
+  padding: 1.5rem 3rem 2rem;
+  font-size: 0.85rem;
+  color: #9ca3af;
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  text-align: center;
+}
+
+/* ================================================
+   RESPONSIVE
+================================================ */
+
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 2rem 1.5rem;
+  }
+
+  .section {
+    padding: 2rem 1.5rem 2.5rem;
+  }
+
+  .navbar {
+    padding: 0.9rem 1.5rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero-card {
+    margin-top: 1rem;
+  }
+}
+
+

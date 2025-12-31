@@ -1,0 +1,181 @@
+OK, je comprends mieux ce que tu veux : ce n’est pas juste une jolie carte, **“Mon parcours objectif” = le cerveau de la plateforme**.
+On va le penser comme un vrai module : définition d’objectif → analyse du profil → plan d’actions → suivi → matching offres.
+
+Je te propose une **architecture claire** que tu peux vraiment coder dans ton PFA.
+
+---
+
+## 1. Rôle de la page “Mon parcours objectif”
+
+Sur cette page, le candidat peut :
+
+1. **Définir son objectif**
+
+   * Exemple :
+
+     * *“Obtenir un PFE en cybersécurité”*
+     * *“Passer de poste BI à consultant ERP”*
+     * *“Devenir développeur backend junior Java”*
+
+2. **Laisser l’IA analyser son profil**
+
+   * L’IA (ou un module de règles pour commencer) regarde :
+
+     * son CV
+     * ses expériences
+     * ses compétences
+     * ses langues
+   * et **calcule** :
+
+     * un **pourcentage d’adaptation** à l’objectif (ex : 40 % prêt pour “Consultant ERP”)
+     * une **liste d’actions recommandées** (checklist).
+
+3. **Valider ou modifier les propositions**
+
+   * Il peut **accepter/refuser** des actions.
+   * S’il n’aime pas, il peut cliquer “Discuter avec l’assistant IA” → ça ouvre le **Chatbot** avec le contexte de l’objectif.
+
+4. **Suivre sa progression**
+
+   * Chaque action = une tâche à cocher.
+   * Quand il coche, le % d’avancement du parcours augmente (20 %, 40 %, 60 %, etc.).
+   * Quand il atteint **100 %**, tu peux déclencher :
+
+     * “Tu as atteint l’objectif, voici des offres qui correspondent”.
+
+---
+
+## 2. Côté backend – structure simple mais évolutive
+
+### 2.1. DTO / Entités
+
+```java
+public class CareerGoalDto {
+    private Long id;
+    private Long candidateId;
+    private String targetTitle;        // "PFE en cybersécurité"
+    private String targetDomain;       // "Cybersécurité", "ERP", "Backend Java"
+    private String description;        // motivation, détails
+    private Integer readinessScore;    // % d’adaptation actuel (profil vs objectif)
+    private Integer progress;          // % d’avancement du plan (checklist)
+    private List<CareerActionDto> actions;
+}
+
+public class CareerActionDto {
+    private Long id;
+    private String label;              // "Obtenir la certif AZ-900", etc.
+    private boolean completed;
+    private String category;           // "Formation", "Expérience", "Langue", ...
+    private Integer weight;            // importance pour le score (ex : 10,15,20)
+}
+```
+
+### 2.2. Endpoints
+
+```java
+// GET objectif + plan
+GET /api/candidates/{id}/career-goal
+
+// POST création / mise à jour de l’objectif
+POST /api/candidates/{id}/career-goal
+
+// POST génération du plan d’actions à partir de l’objectif + profil
+POST /api/candidates/{id}/career-goal/generate-plan
+
+// PATCH cocher/décocher une action + recalcul du progrès
+PATCH /api/candidates/{id}/career-goal/actions/{actionId}/toggle
+```
+
+---
+
+## 3. Logique “IA” que tu peux vraiment implémenter
+
+Pour ton PFA, tu n’es pas obligée d’avoir un vrai modèle ML.
+Tu peux :
+
+1. **Créer un “profil type” par objectif** (ex. backend, ERP, cybersécurité…)
+
+   * Pour chaque type de poste, tu définis :
+
+     * compétences obligatoires / recommandées
+     * certifications
+     * niveau de langue
+     * années d’expérience.
+
+2. **Comparer le profil du candidat** (déjà stocké dans ton module profil) avec ce profil type :
+
+   * `% adaptation` = (nb points compétences déjà présentes / nb points totaux).
+   * Les compétences manquantes → deviennent des **actions**.
+
+3. **Formule simple** :
+
+```java
+readinessScore = (pointsPossédés * 100) / pointsTotaux;
+progress = (actionsComplétées * 100) / actionsTotales;
+```
+
+Plus tard, tu pourras remplacer cette logique par un vrai modèle IA sans changer la structure.
+
+---
+
+## 4. Côté front – comportement de la page
+
+### 4.1. Si aucun objectif défini
+
+Afficher un écran comme :
+
+* Titre : **“Définir mon objectif professionnel”**
+* Formulaire :
+
+  * Type d’objectif :
+
+    * “Premier emploi”, “PFE”, “Reconversion”, “Évolution de carrière”
+  * Poste cible (input texte)
+  * Domaine cible (select : BI, ERP, Cyber, Backend, Data…)
+  * Horizon (6 mois / 12 mois / 24 mois)
+  * Champ “Explique ton objectif”
+
+Bouton : **“Générer un parcours”** → `POST /career-goal` puis `POST /career-goal/generate-plan`.
+
+### 4.2. Si objectif déjà défini
+
+Tu gardes la carte que tu as :
+
+* `Poste cible : Développeur backend junior`
+* `% adaptation actuel` (readinessScore)
+* `% progression du parcours` (progress)
+* Liste des actions (checkbox)
+* Boutons :
+
+  * “Discuter avec l’IA” → redirection vers `/candidate/chatbot` avec le contexte
+  * “Voir plus de détails” → page timeline / détail du plan.
+
+---
+
+## 5. Adaptation rapide de ta page actuelle
+
+Dans `MyCareerPath.jsx`, tu pourras faire :
+
+```jsx
+if (!careerGoal) {
+  return (
+    <div className="career-container">
+      <h1 className="career-title">Mon parcours objectif</h1>
+      <div className="career-card">
+        <h2>Définir mon objectif</h2>
+        {/* formulaire ici */}
+      </div>
+    </div>
+  );
+}
+```
+
+Et si `careerGoal` existe, tu affiches la carte que je t’ai donnée.
+
+---
+
+Si tu veux, prochaine étape je peux te :
+
+* proposer exactement **le formulaire React complet pour définir l’objectif**,
+* puis le **service Spring Boot** `generatePlan()` qui prend en entrée le profil + objectif et renvoie une liste d’actions avec le % d’adaptation.
+Si tu veux qu’on passe à une vraie structure User + CandidateProfile séparés (avec Spring Security clean), je peux te proposer le duo User / Role / CandidateProfile et adapter RegisterRequest et le login pour que tout soit cohérent.

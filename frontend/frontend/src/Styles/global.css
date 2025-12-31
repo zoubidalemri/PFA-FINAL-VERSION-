@@ -1,0 +1,57 @@
+/* =======================================================
+   RESET GLOBAL
+======================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #e2e8f0;
+  background-color: #020617;
+}
+
+/* =======================================================
+   LAYOUT GLOBAL (.app)
+   -> conteneur principal de toute l'app
+======================================================= */
+
+.app {
+  min-height: 100%;
+  width: 100%;
+  background: radial-gradient(circle at top left, #0f172a, #020617 55%);
+  display: flex;
+  flex-direction: column;
+}
+
+/* le contenu principal de chaque page peut utiliser <main> */
+main {
+  flex: 1;
+  width: 100%;
+}
+
+/* =======================================================
+   HEADER GLOBAL (navbar)
+   pour être sûr qu'il prenne 100% de la largeur
+======================================================= */
+
+.navbar,
+header,
+.header {
+  width: 100%;
+}
